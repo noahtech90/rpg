@@ -50,7 +50,7 @@ class Character:
             return "bear"
 
     def attack(self):
-        attack_damage = random.randint(15, 30)
+        attack_damage = random.randint(15, 30) + (self.character_stats['luck'] * 1.2)
         return attack_damage
 
 
