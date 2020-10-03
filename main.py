@@ -62,13 +62,18 @@ time.sleep(2)
 raw_name = input('What is your character\'s name? ')
 name = raw_name[0].upper() + raw_name[1:].lower()
 time.sleep(2)
+print("")
 # Assign Gender
 print("What gender is your character? ")
-gender = input("Male                Female                Other").lower()
+time.sleep(1)
+gender = input("Male                Female                Other ").lower()
 time.sleep(2)
+print("")
+
 # Assign Player Type
 print("""What class is your character? """)
-vocation = input('      Wizard            Warrior           Archer').lower()
+time.sleep(1)
+vocation = input('      Wizard            Warrior           Archer ').lower()
 print("")
 time.sleep(2)
 
@@ -76,11 +81,10 @@ character = Character(name, gender, vocation)
 
 
 def start_game(character):
-    print(
-        f"{character} embarked on {character.possesive()} quest.  {character.name} knew only that there was a battle coming.")
+    print(f"{character} woke in a dark mysterious cave.  {character.name} knew not where {character.pronoun()} came from, nor what {character.pronoun()} was doing in this desolate place. ")
     time.sleep(2)
     print("")
-    print(f"\t{character} drew {character.possesive()} {character.weapon()} and headed down the road")
+    print(f"{character.name} drew {character.possesive()} {character.weapon()} and moved towards a faint dripping sound")
     time.sleep(2)
 
 
