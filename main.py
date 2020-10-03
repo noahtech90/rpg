@@ -41,26 +41,31 @@ class Character:
         else:
             return "bear"
 
-print("""
+print("""You wake up in a dark cave""")
+print("")
+time.sleep(2)
 
-    Welcome to a very generic rpg game
-
-    """)
-
-raw_name = input("What is your character's name?")
+raw_name = input("What is your character's name? ")
 name = raw_name[0].upper() + raw_name[1:].lower()
 time.sleep(2)
-print("What gender is your character?")
+
+print("What gender is your character? ")
 gender = input("Male                Female                Other").lower()
 time.sleep(2)
-print("""
-    What class is your character?
-    """)
+
+print("""What class is your character? """)
 vocation = input("      Wizard            Warrior           Archer").lower()
 print("")
 time.sleep(2)
+
 character = Character(name, gender, vocation)
-print(f"{character} embarked on {character.possesive()} quest.  {character.name} knew only that there was a battle coming.")
-time.sleep(2)
-print("")
-print(f"\t{character} drew {character.possesive()} {character.weapon()} and headed down the road")
+
+def start_game(character):
+    print(f"{character} embarked on {character.possesive()} quest.  {character.name} knew only that there was a battle coming.")
+    time.sleep(2)
+    print("")
+    print(f"\t{character} drew {character.possesive()} {character.weapon()} and headed down the road")
+
+
+
+start_game(character)
