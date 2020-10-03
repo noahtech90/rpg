@@ -86,6 +86,8 @@ def start_game(character):
     print("")
     print(f"{character.name} drew {character.possesive()} {character.weapon()} and moved towards a faint dripping sound")
     time.sleep(2)
+    print(f"Suddenly {character.name} is attacked")
+
 
 
 start_game(character)
