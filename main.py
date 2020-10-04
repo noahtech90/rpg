@@ -72,7 +72,8 @@ def first_battle(main_character):
                 first_enemy.character_stats['health'] -= 100
         elif decision == 'heal':
             main_character.character_stats['health'] += 10
-        main_character.character_stats['health'] -= first_enemy.attack()
+        if first_enemy.character_stats['health'] > 0:
+            main_character.character_stats['health'] -= first_enemy.attack()
 
         print("")
         print("")
