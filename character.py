@@ -1,5 +1,4 @@
 import random
-import time
 
 class Character:
     character_stats = dict(health=120, mana=50, speed=10, luck=1.3)
