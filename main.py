@@ -1,5 +1,6 @@
 import random
 import time
+from character import Character
 
 """
 Character class which creates the story 
@@ -7,51 +8,14 @@ Character class which creates the story
 Character can attack and defend, similar to a finial fantasy type game
 
 """
+#Each enemy character is given name from below list
+enemy_available = ['Baron', 'Ratchet', 'Snitzz', 'Valten']
 
+#Gender Options
+genders = ['male', 'female', 'other']
 
-class Character:
-    character_stats = dict(health=100, mana=50, speed=10, luck=1)
-
-    def __init__(self, name, gender, vocation):
-        self.name = name
-        self.gender = gender
-        self.vocation = vocation
-        self.gold = random.randint(5, 150000)
-
-    def __str__(self):
-        capitalized_vocation = self.vocation[0].upper() + self.vocation[1:]
-        return f"   {self.name} the {capitalized_vocation}"
-
-    def pronoun(self):
-        if self.gender == 'male':
-            return "he"
-        elif self.gender == 'female':
-            return "she"
-        else:
-            return "they"
-
-    def possesive(self):
-        if self.gender == 'male':
-            return "his"
-        elif self.gender == 'female':
-            return "her"
-        else:
-            return "their"
-
-    def weapon(self):
-
-        if self.vocation == 'wizard':
-            return "staff"
-        elif self.vocation == 'warrior':
-            return "sword"
-        elif self.vocation == 'archer':
-            return "bow"
-        else:
-            return "bear"
-
-    def attack(self):
-        attack_damage = random.randint(15, 30) + (self.character_stats['luck'] * 1.2)
-        return attack_damage
+#Player Types
+classes = ['warrior', 'wizard', 'archer']
 
 
 # Intro
