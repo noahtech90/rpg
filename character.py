@@ -12,7 +12,7 @@ class Character:
 
     def __str__(self):
         capitalized_vocation = self.vocation[0].upper() + self.vocation[1:]
-        return f"   {self.name} the {capitalized_vocation}"
+        return f"{self.name} the {capitalized_vocation}"
 
     def pronoun(self):
         if self.gender == 'male':
@@ -49,19 +49,9 @@ class Enemy(Character):
 
 
     def __init__(self, name_list, genders, classes):
-        self.name = name_list.pop(random.randint(0, len(name_list)))
+        self.name = name_list.pop(random.randint(0, len(name_list)) - 1)
         self.gender = genders[random.randint(0,2)]
         self.vocation = classes[random.randint(0,2)]
 
 
-#Each enemy character is given name from below list
-enemy_available = ['Baron', 'Ratchet', 'Snitzz', 'Valten']
 
-#Gender Options
-genders = ['male', 'female', 'other']
-
-#Player Types
-classes = ['warrior', 'wizard', 'archer']
-
-first_enemy = Enemy(enemy_available, genders, classes)
-print(first_enemy)

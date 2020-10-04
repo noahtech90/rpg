@@ -1,6 +1,6 @@
 import random
 import time
-from character import Character
+from character import Character, Enemy
 
 """
 Character class which creates the story 
@@ -52,6 +52,12 @@ def start_game(character):
     time.sleep(2)
     print(f"Suddenly {character.name} is attacked")
 
+#Create Enemies
+first_enemy = Enemy(enemy_available, genders, classes)
+second_enemy = Enemy(enemy_available, genders, classes)
+third_enemy = Enemy(enemy_available, genders, classes)
+fourth_enemy = Enemy(enemy_available, genders, classes)
 
 
 start_game(character)
+print(first_enemy)
