@@ -2,6 +2,7 @@ import random
 
 class Character:
     character_stats = dict(health=120, mana=50, speed=10, luck=1.3)
+    location = 0
 
     def __init__(self, name, gender, vocation):
         self.name = name

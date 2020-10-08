@@ -9,6 +9,8 @@ Character can attack and defend, similar to a final fantasy type game
 
 Enemies inherit from the Character class
 
+May be a turn based game that allows you to travel
+
 """
 # Each enemy character is given name from below list
 enemy_available = ['Baron', 'Ratchet', 'Snitzz', 'Valten']

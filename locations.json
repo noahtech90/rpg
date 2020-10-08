@@ -1,0 +1,16 @@
+{
+  "locations": {
+    "level_one": {
+      "scenery": "Example Text of Level One"
+    },
+    "level_two": {
+      "scenery": "Example Text of Level One"
+    },
+    "level_three": {
+      "scenery": "Example Text of Level One"
+    },
+    "level_four": {
+      "scenery": "Example Text of Level One"
+    }
+  }
+}
