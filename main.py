@@ -3,7 +3,7 @@ import random
 import time
 
 from character import Character, Enemy
-from levels import index_to_level, establish_location
+from location_functions import index_to_level, establish_location
 
 """
 Project implements OOP design to dynamically create an RPG like story
