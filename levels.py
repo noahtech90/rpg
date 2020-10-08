@@ -13,7 +13,8 @@ def index_to_level(player_index):
         3: 'level_three',
         4: 'level_four',
     }
-    return index_to_level_descript[player_index]
+    level_description = index_to_level_descript[player_index]
+    return level_description
 
 
 def establish_location(level):

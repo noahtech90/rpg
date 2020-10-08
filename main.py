@@ -15,6 +15,11 @@ Enemies inherit from the Character class
 
 May be a turn based game that allows you to travel
 
+There are four enemies on the map
+
+Each turn you will move and they will move
+
+You don't know where they are and win the game by defeating all 4
 """
 # Each enemy character is given name from below list
 enemy_available = ['Baron', 'Ratchet', 'Snitzz', 'Valten']
@@ -98,12 +103,12 @@ def first_battle(main_character):
 def first_move(main_character):
 
     #Move Character
-    main_character.move_position(1)
+    main_character.location = main_character.move_position(1)
 
     #Obtain index to travel through stored Story
-    current_index = main_character
+    current_index = main_character.location
     current_level = index_to_level(current_index)
-    #print(establish_location(current_level))
+    print(establish_location(current_level))
 
 # Create Enemies
 first_enemy = Enemy(enemy_available, genders, classes)
