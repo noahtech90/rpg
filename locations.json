@@ -1,16 +1,16 @@
 {
   "locations": {
     "level_one": {
-      "scenery": "Example Text of Level One"
+      "scenery": "A friendly town, a nearby shop, and place to sleep."
     },
     "level_two": {
-      "scenery": "Example Text of Level Two"
+      "scenery": "A forested sunny trail."
     },
     "level_three": {
-      "scenery": "Example Text of Level Three"
+      "scenery": "A dark forest leading to a cavern."
     },
     "level_four": {
-      "scenery": "Example Text of Level Four"
+      "scenery": "A cave leading down to a strange flickering flame."
     }
   }
 }

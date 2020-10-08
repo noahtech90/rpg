@@ -4,7 +4,7 @@ import json
 
 class Character:
     character_stats = dict(health=120, mana=50, speed=10, luck=1.3)
-    location = 1
+    location = 4
 
     def __init__(self, name, gender, vocation):
         self.name = name
