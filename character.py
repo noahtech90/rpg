@@ -14,13 +14,12 @@ class Character:
         capitalized_vocation = self.vocation[0].upper() + self.vocation[1:]
         return f"{self.name} the {capitalized_vocation}"
 
-    def move_postion(self, move):
+    def move_position(self, move):
         if move < 0 and self.location == 0:
             return 0
         else:
             position_move = self.location + move
             return position_move
-
 
 
     def pronoun(self):
