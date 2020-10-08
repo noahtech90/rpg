@@ -29,6 +29,13 @@ genders = ['male', 'female', 'other']
 # Player Types
 classes = ['warrior', 'wizard', 'archer']
 
+"""
+
+Initial Character Setup Section Currently Commented Out 
+
+For Testing
+
+"""
 # Intro
 # print("""You wake up in a dark cave""")
 # print("")
