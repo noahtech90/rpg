@@ -37,31 +37,29 @@ For Testing
 
 """
 # Intro
-print("""You wake up in a dark cave""")
-print("")
+print("""You wake up in a dark cave \n""")
 time.sleep(2)
 # Assign Name
-raw_name = input('What is your character\'s name? ')
+raw_name = input('What is your character\'s name? \n')
 #raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
 time.sleep(2)
-print("")
+
 
 # Assign Gender
-print("What gender is your character? ")
+print("What gender is your character? \n")
 time.sleep(1)
-gender = input("Male                Female                Other ").lower()
+gender = input("Male                Female                Other \n").lower()
 #gender = 'male'
 time.sleep(2)
-print("")
+
 
 # Assign Player Type
 print("""What class is your character? """)
 time.sleep(1)
-vocation = input('Wizard            Warrior           Archer ').lower()
+vocation = input('Wizard            Warrior           Archer \n').lower()
 
 #vocation = 'wizard'
-print("")
 time.sleep(2)
 
 character = Character(name, gender, vocation)
@@ -69,16 +67,14 @@ character = Character(name, gender, vocation)
 
 def start_game(main_character):
     print(
-        f"{main_character} woke in a dark mysterious cave.  {main_character.name} knew not where {main_character.pronoun()} came from, nor what {main_character.pronoun()} was doing in this desolate place. ")
+        f"{main_character} woke in a dark mysterious cave.  {main_character.name} knew not where {main_character.pronoun()} came from, nor what {main_character.pronoun()} was doing in this desolate place. \n")
     time.sleep(3)
-    print("")
     print(f"{main_character.name} drew {main_character.possesive()} {main_character.weapon()} and moved towards a "
-          f"faint dripping sound")
+          f"faint dripping sound \n")
     time.sleep(2)
-    print("")
     print(
         f"Suddenly, a snarling hideous creature clutching its {first_enemy.weapon()} jumped out, {first_enemy} lunges "
-        f"towards {main_character.name}")
+        f"towards {main_character.name} \n")
     first_battle(main_character)
 
 
@@ -96,30 +92,23 @@ def first_battle(main_character):
         if first_enemy.character_stats['health'] > 0:
             main_character.character_stats['health'] -= first_enemy.attack()
 
-        print("")
-        print("")
         time.sleep(1)
-        print(f"{main_character}: " + str(main_character.character_stats))
-        print("")
-        print(f"{first_enemy}: " + str(first_enemy.character_stats))
-        print("")
-        print("")
+        print(f"\n\n{main_character}: " + str(main_character.character_stats) +"\n")
+        print(f"{first_enemy}: " + str(first_enemy.character_stats) +"\n")
+
         time.sleep(2)
     first_move(main_character)
 
 
 def first_move(main_character):
     # Move Character
-    print(f"{main_character} defeated the wretched creature, the monster lay near death")
-    print("")
+    print(f"{main_character} defeated the wretched creature, the monster lay near death \n")
     time.sleep(2)
-    print(f'{first_enemy.name} "I am not the last poor {main_character.name}, there are 3 more looking for you..." ')
-    print("")
+    print(f'{first_enemy.name} "I am not the last poor {main_character.name}, there are 3 more looking for you...\n" ')
     time.sleep(3)
-    print(f"The creature passed on leaving {main_character.name} to ponder what had been said")
-    print("")
+    print(f"The creature passed on leaving {main_character.name} to ponder what had been said \n")
     time.sleep(2)
-    print(f"{main_character} left the cave walked and began to chart {main_character.possesive()} quest")
+    print(f"{main_character} left the cave walked and began to chart {main_character.possesive()} quest \n")
 
     #Character decides where to go
     decision = int(input("1: The Barren Lands          or          2: The Forrest "))
