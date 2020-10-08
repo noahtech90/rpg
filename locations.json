@@ -1,16 +1,16 @@
 {
   "locations": {
     "level_one": {
-      "scenery": "A friendly town, a nearby shop, and place to sleep."
+      "scenery": "a friendly town, a nearby shop, and place to sleep."
     },
     "level_two": {
-      "scenery": "A forested sunny trail."
+      "scenery": "a forested sunny trail."
     },
     "level_three": {
-      "scenery": "A dark forest leading to a cavern."
+      "scenery": "a dark forest leading to a cavern."
     },
     "level_four": {
-      "scenery": "A cave leading down to a strange flickering flame."
+      "scenery": "a cave leading down to a strange flickering flame."
     }
   }
 }

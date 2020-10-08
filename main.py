@@ -37,32 +37,32 @@ For Testing
 
 """
 # Intro
-# print("""You wake up in a dark cave""")
-# print("")
-# time.sleep(2)
+print("""You wake up in a dark cave""")
+print("")
+time.sleep(2)
 # Assign Name
-# raw_name = input('What is your character\'s name? ')
-raw_name = "Noah"
+raw_name = input('What is your character\'s name? ')
+#raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
-# time.sleep(2)
-# print("")
+time.sleep(2)
+print("")
 
 # Assign Gender
-# print("What gender is your character? ")
-# time.sleep(1)
-# gender = input("Male                Female                Other ").lower()
-gender = 'male'
-# time.sleep(2)
-# print("")
+print("What gender is your character? ")
+time.sleep(1)
+gender = input("Male                Female                Other ").lower()
+#gender = 'male'
+time.sleep(2)
+print("")
 
 # Assign Player Type
-# print("""What class is your character? """)
-# time.sleep(1)
-# vocation = input('Wizard            Warrior           Archer ').lower()
+print("""What class is your character? """)
+time.sleep(1)
+vocation = input('Wizard            Warrior           Archer ').lower()
 
-vocation = 'wizard'
-# print("")
-# time.sleep(2)
+#vocation = 'wizard'
+print("")
+time.sleep(2)
 
 character = Character(name, gender, vocation)
 
@@ -105,16 +105,34 @@ def first_battle(main_character):
         print("")
         print("")
         time.sleep(2)
+    first_move(main_character)
 
 
 def first_move(main_character):
     # Move Character
-    main_character.location = main_character.move_position(1)
+    print(f"{main_character} defeated the wretched creature, the monster lay near death")
+    print("")
+    time.sleep(2)
+    print(f'{first_enemy.name} "I am not the last poor {main_character.name}, there are 3 more looking for you..." ')
+    print("")
+    time.sleep(3)
+    print(f"The creature passed on leaving {main_character.name} to ponder what had been said")
+    print("")
+    time.sleep(2)
+    print(f"{main_character} left the cave walked and began to chart {main_character.possesive()} quest")
+
+    #Character decides where to go
+    decision = int(input("1: The Barren Lands          or          2: The Forrest "))
+    next_location = main_character.decide_move(decision)
+    main_character.location = main_character.move_position(next_location)
 
     # Obtain index to travel through stored Story
     current_index = main_character.location
     current_level = index_to_descript(current_index)
-    print(establish_location(current_level))
+    time.sleep(2)
+    print("")
+
+    print(f"{main_character.name} enters" + establish_location(current_level))
 
 
 # Create Enemies
@@ -124,5 +142,5 @@ third_enemy = Enemy(enemy_available, genders, classes)
 fourth_enemy = Enemy(enemy_available, genders, classes)
 
 # Initiate Story
-# start_game(character)
-first_move(character)
+start_game(character)
+#first_move(character)

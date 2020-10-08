@@ -4,7 +4,7 @@ import json
 
 class Character:
     character_stats = dict(health=120, mana=50, speed=10, luck=1.3)
-    location = 4
+    location = 2
 
     def __init__(self, name, gender, vocation):
         self.name = name
@@ -31,6 +31,19 @@ class Character:
                 return position_move
             else:
                 return self.location
+
+    def decide_move(self, decision):
+        decided = False
+        while not decided:
+            if decision == 1:
+                decision = decision * -1
+                decided = True
+            elif decision == 2:
+                decision = 1
+                decided = True
+            else:
+                decision = int(input("1: Forwards           or           2: Backwards"))
+        return decision
 
     def pronoun(self):
         if self.gender == 'male':
