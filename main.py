@@ -1,5 +1,4 @@
-
-#Import Libraries
+# Import Libraries
 import random
 import time
 
@@ -13,7 +12,7 @@ Character can attack and defend, similar to a final fantasy type game
 
 Enemies inherit from the Character class
 
-May be a turn based game that allows you to travel
+Turn based game that allows you to travel
 
 There are four enemies on the map
 
@@ -31,32 +30,32 @@ genders = ['male', 'female', 'other']
 classes = ['warrior', 'wizard', 'archer']
 
 # Intro
-#print("""You wake up in a dark cave""")
-#print("")
-#time.sleep(2)
+# print("""You wake up in a dark cave""")
+# print("")
+# time.sleep(2)
 # Assign Name
-#raw_name = input('What is your character\'s name? ')
+# raw_name = input('What is your character\'s name? ')
 raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
-#time.sleep(2)
-#print("")
+# time.sleep(2)
+# print("")
 
 # Assign Gender
-#print("What gender is your character? ")
-#time.sleep(1)
-#gender = input("Male                Female                Other ").lower()
+# print("What gender is your character? ")
+# time.sleep(1)
+# gender = input("Male                Female                Other ").lower()
 gender = 'male'
-#time.sleep(2)
-#print("")
+# time.sleep(2)
+# print("")
 
 # Assign Player Type
-#print("""What class is your character? """)
-#time.sleep(1)
-#vocation = input('Wizard            Warrior           Archer ').lower()
+# print("""What class is your character? """)
+# time.sleep(1)
+# vocation = input('Wizard            Warrior           Archer ').lower()
 
 vocation = 'wizard'
-#print("")
-#time.sleep(2)
+# print("")
+# time.sleep(2)
 
 character = Character(name, gender, vocation)
 
@@ -100,15 +99,16 @@ def first_battle(main_character):
         print("")
         time.sleep(2)
 
-def first_move(main_character):
 
-    #Move Character
+def first_move(main_character):
+    # Move Character
     main_character.location = main_character.move_position(1)
 
-    #Obtain index to travel through stored Story
+    # Obtain index to travel through stored Story
     current_index = main_character.location
     current_level = index_to_level(current_index)
     print(establish_location(current_level))
+
 
 # Create Enemies
 first_enemy = Enemy(enemy_available, genders, classes)
@@ -117,5 +117,5 @@ third_enemy = Enemy(enemy_available, genders, classes)
 fourth_enemy = Enemy(enemy_available, genders, classes)
 
 # Initiate Story
-#start_game(character)
+# start_game(character)
 first_move(character)

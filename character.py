@@ -19,8 +19,8 @@ class Character:
     def move_position(self, move):
         if move < 0 and self.location == 1:
             return 1
-        # Need to adjust 4 to be a variable that counts
-        # number of levels in JSON data
+        # !!! Need to adjust 4 to be a variable that counts
+        # !!! number of levels in JSON data
         elif self.location < 4 and move > 0:
             position_move = self.location + 1
             return position_move
