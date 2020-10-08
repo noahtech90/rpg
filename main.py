@@ -3,7 +3,7 @@ import random
 import time
 
 from character import Character, Enemy
-from location_functions import index_to_level, establish_location
+from location_functions import index_to_descript, establish_location
 
 """
 Project implements OOP design to dynamically create an RPG like story
@@ -106,7 +106,7 @@ def first_move(main_character):
 
     # Obtain index to travel through stored Story
     current_index = main_character.location
-    current_level = index_to_level(current_index)
+    current_level = index_to_descript(current_index)
     print(establish_location(current_level))
 
 
