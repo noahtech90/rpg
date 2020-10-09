@@ -21,7 +21,22 @@ def index_to_descript(player_index):
 
 
 # Accessing JSON to view stored levels
-def establish_location(level):
+def location_scenery(level):
     with open('locations.json') as f:
         story = json.load(f)
         return story['locations'][level]['scenery']
+
+
+def location_name(level):
+    with open('locations.json') as f:
+        story = json.load(f)
+        return story['locations'][level]['name']
+
+
+def location_bonus(level):
+    with open('locations.json') as f:
+        story = json.load(f)
+        if 'bonus' in story['locations'][level]:
+            return story['locations'][level]['bonus']
+        else:
+            return None

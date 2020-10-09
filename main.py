@@ -3,7 +3,7 @@ import random
 import time
 
 from character import Character, Enemy
-from location_functions import index_to_descript, establish_location
+from location_functions import index_to_descript, location_scenery, location_bonus, location_name
 
 """
 Project implements OOP design to dynamically create an RPG like story
@@ -41,25 +41,23 @@ print("""You wake up in a dark cave \n""")
 time.sleep(2)
 # Assign Name
 raw_name = input('What is your character\'s name? \n')
-#raw_name = "Noah"
+# raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
 time.sleep(2)
-
 
 # Assign Gender
 print("What gender is your character? \n")
 time.sleep(1)
 gender = input("Male                Female                Other \n").lower()
-#gender = 'male'
+# gender = 'male'
 time.sleep(2)
-
 
 # Assign Player Type
 print("""What class is your character? """)
 time.sleep(1)
 vocation = input('Wizard            Warrior           Archer \n').lower()
 
-#vocation = 'wizard'
+# vocation = 'wizard'
 time.sleep(2)
 
 character = Character(name, gender, vocation)
@@ -79,8 +77,9 @@ def start_game(main_character):
 
 
 def first_battle(main_character):
+    # Battle Loop
     while main_character.character_stats['health'] > 0 and first_enemy.character_stats['health'] > 0:
-        decision = input('Attack         Counter          Heal').lower()
+        decision = input('Attack         Counter          Heal ').lower()
         if decision == 'attack':
             first_enemy.character_stats['health'] -= main_character.attack()
         elif decision == 'counter':
@@ -93,35 +92,72 @@ def first_battle(main_character):
             main_character.character_stats['health'] -= first_enemy.attack()
 
         time.sleep(1)
-        print(f"\n\n{main_character}: " + str(main_character.character_stats) +"\n")
-        print(f"{first_enemy}: " + str(first_enemy.character_stats) +"\n")
+
+        # Show Enemy and Player Stats
+        print(f"\n\n{main_character}: " + str(main_character.character_stats) + "\n")
+        print(f"{first_enemy}: " + str(first_enemy.character_stats) + "\n")
 
         time.sleep(2)
-    first_move(main_character)
+
+    if main_character.character_stats['health'] > 0:
+        # Move Character
+        print(f"{main_character} defeated the wretched creature, the monster lay near death \n")
+        time.sleep(2)
+        print(
+            f'{first_enemy.name} "I am not the last poor {main_character.name}, there are 3 more looking for you..." \n')
+        time.sleep(3)
+        print(f"The creature passed on leaving {main_character.name} to ponder what had been said \n")
+        time.sleep(2)
+        print(f"{main_character.name} left the cave walked and began to chart {main_character.possesive()} quest \n")
+        time.sleep(3)
+        first_move(main_character)
+    # First Potential Loss of Game
+    else:
+        time.sleep(3)
+        print(f"\n{main_character} has fallen")
+        print(f"\n :( ")
+        time.sleep(5)
 
 
 def first_move(main_character):
-    # Move Character
-    print(f"{main_character} defeated the wretched creature, the monster lay near death \n")
-    time.sleep(2)
-    print(f'{first_enemy.name} "I am not the last poor {main_character.name}, there are 3 more looking for you...\n" ')
-    time.sleep(3)
-    print(f"The creature passed on leaving {main_character.name} to ponder what had been said \n")
-    time.sleep(2)
-    print(f"{main_character} left the cave walked and began to chart {main_character.possesive()} quest \n")
-
-    #Character decides where to go
-    decision = int(input("1: The Barren Lands          or          2: The Forrest "))
+    # Character decides where to go
+    decision = int(input("1: Acanon         or          2: The Sea of Trees "))
     next_location = main_character.decide_move(decision)
     main_character.location = main_character.move_position(next_location)
 
     # Obtain index to travel through stored Story
     current_index = main_character.location
     current_level = index_to_descript(current_index)
-    time.sleep(2)
+    # time.sleep(2)
     print("")
 
-    print(f"{main_character.name} enters" + establish_location(current_level))
+    print(f"{main_character.name} enters " + location_scenery(current_level))
+    player_traversal(main_character)
+
+
+def player_traversal(main_character):
+    current_location_bonus = location_bonus(index_to_descript(main_character.location))
+    time.sleep(3)
+    print("\n")
+    if current_location_bonus is not None:
+        print(current_location_bonus + "\n")
+    time.sleep(3)
+    enter_level(main_character)
+
+
+def enter_level(main_character):
+    current_location = index_to_descript(main_character.location)
+    level_name = location_name(current_location)
+    print(f"{main_character.name} arrived at {level_name}")
+    first_move(main_character)
+
+
+def travel_loop(main_character):
+    playing = True
+    while playing:
+        first_move(main_character)
+        time.sleep(2)
+        print("\n")
 
 
 # Create Enemies
@@ -132,4 +168,4 @@ fourth_enemy = Enemy(enemy_available, genders, classes)
 
 # Initiate Story
 start_game(character)
-#first_move(character)
+# first_move(character)

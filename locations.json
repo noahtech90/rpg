@@ -1,15 +1,20 @@
 {
   "locations": {
     "level_one": {
-      "scenery": "a friendly town, a nearby shop, and place to sleep."
+      "name": "Acanon",
+      "scenery": "a friendly town, a nearby shop, and place to sleep.",
+      "bonus": "Your character cannot be attacked by enemies in this space."
     },
     "level_two": {
+      "name": "Goblin Forest",
       "scenery": "a forested sunny trail."
     },
     "level_three": {
+      "name": "The Sea of Trees",
       "scenery": "a dark forest leading to a cavern."
     },
     "level_four": {
+      "name": "The Shadow Abyss",
       "scenery": "a cave leading down to a strange flickering flame."
     }
   }

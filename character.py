@@ -78,7 +78,7 @@ class Character:
 
 
 class Enemy(Character):
-    character_stats = dict(health=70, mana=20, speed=5, luck=1)
+    character_stats = dict(health=130, mana=20, speed=5, luck=1)
 
     def __init__(self, name_list, genders, classes):
         self.name = name_list.pop(random.randint(0, len(name_list)) - 1)
