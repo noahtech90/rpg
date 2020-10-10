@@ -6,7 +6,7 @@
       "bonus": "Your character cannot be attacked by enemies in this space."
     },
     "level_two": {
-      "name": "Outside Cave",
+      "name": "Hidden Cave",
       "scenery": "a small cave tucked under a mountain."
     },
     "level_three": {

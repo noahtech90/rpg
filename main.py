@@ -3,7 +3,7 @@ import random
 import time
 
 from character import Character, Enemy
-from location_functions import index_to_descript, location_scenery, location_bonus, location_name
+from location_functions import index_to_descript, location_scenery, location_bonus, location_name, find_contiguous_levels
 
 """
 Project implements OOP design to dynamically create an RPG like story
@@ -121,18 +121,36 @@ def first_battle(main_character):
 
 def first_move(main_character):
     # Character decides where to go
-    decision = int(input("1: Acanon         or          2: The Goblin Forrest "))
+
+    direction_one, direction_two = find_contiguous_levels(main_character.location)
+    if direction_two == None:
+        only_level = location_name(index_to_descript(direction_one))
+        print(f"Your character can only go to {only_level}")
+        ready = input("Are you ready? ")
+        decision = 2
+    elif direction_one == None:
+        only_level = location_name(index_to_descript(direction_two))
+        print(f"Your character can only go to {only_level}")
+        ready = input("Are you ready? ")
+        decision = 1
+
+    else:
+        level_one = location_name(index_to_descript(direction_one))
+        level_two = location_name(index_to_descript(direction_two))
+        decision = int(input(f"1. {level_one}            or          2. {level_two}"))
+
+    # New location fed into character object
     next_location = main_character.decide_move(decision)
     main_character.location = main_character.move_position(next_location)
 
-    # Obtain index to travel through stored Story
+    # Access Level Object
     print("")
     interact_level(main_character)
 
 
 def check_level_bonus(main_character):
     current_location_bonus = location_bonus(index_to_descript(main_character.location))
-    time.sleep(3)
+    #time.sleep(3)
     print("\n")
     if current_location_bonus is not None:
         print(current_location_bonus + "\n")
@@ -144,19 +162,20 @@ def interact_level(main_character):
     current_level = index_to_descript(main_character.location)
     level_name = location_name(current_level)
     print(f"{main_character.name} arrived at {level_name}\n")
-    time.sleep(3)
+    #time.sleep(3)
     print(f"{main_character.name} finds " + location_scenery(current_level))
-    time.sleep(2)
-    print("")
+    #time.sleep(2)
     print(check_level_bonus(main_character))
+    first_move(main_character)
 
 
 def travel_loop(main_character):
     playing = True
     while playing:
         first_move(main_character)
-        time.sleep(2)
-        print("\n")
+        first_move(main_character)
+        #time.sleep(2)
+        #print("\n")
 
 
 # Create Enemies

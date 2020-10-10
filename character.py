@@ -21,7 +21,7 @@ class Character:
             return 1
         # !!! Need to adjust 4 to be a variable that counts
         # !!! number of levels in JSON data
-        elif self.location < 4 and move > 0:
+        elif self.location < 5 and move > 0:
             position_move = self.location + 1
             return position_move
 
@@ -36,13 +36,10 @@ class Character:
         decided = False
         while not decided:
             if decision == 1:
-                decision = decision * -1
+                decision = -1
                 decided = True
             elif decision == 2:
                 decision = 1
-                decided = True
-            else:
-                decision = int(input("1: Forwards           or           2: Backwards"))
         return decision
 
     def pronoun(self):

@@ -14,13 +14,28 @@ def index_to_descript(player_index):
         2: 'level_two',
         3: 'level_three',
         4: 'level_four',
+        5: 'level_five'
     }
 
     level_description = index_to_level_descript[player_index]
     return level_description
 
 
-# Accessing JSON to view stored levels
+def find_contiguous_levels(player_index):
+    if player_index > 1 or player_index < 5:
+        i = player_index - 1
+        j = player_index + 1
+    elif player_index == 1:
+        i = player_index + 1
+        j = None
+    else:
+        i = None
+        j = player_index - 1
+
+    return i, j
+
+
+# Level Description Functions
 def location_scenery(level):
     with open('locations.json') as f:
         story = json.load(f)
