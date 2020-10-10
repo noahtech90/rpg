@@ -6,14 +6,18 @@
       "bonus": "Your character cannot be attacked by enemies in this space."
     },
     "level_two": {
+      "name": "Outside Cave",
+      "scenery": "a small cave tucked under a mountain."
+    },
+    "level_three": {
       "name": "Goblin Forest",
       "scenery": "a forested sunny trail."
     },
-    "level_three": {
+    "level_four": {
       "name": "The Sea of Trees",
       "scenery": "a dark forest leading to a cavern."
     },
-    "level_four": {
+    "level_five": {
       "name": "The Shadow Abyss",
       "scenery": "a cave leading down to a strange flickering flame."
     }

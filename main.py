@@ -38,27 +38,27 @@ For Testing
 """
 # Intro
 print("""You wake up in a dark cave \n""")
-time.sleep(2)
+#time.sleep(2)
 # Assign Name
-raw_name = input('What is your character\'s name? \n')
-# raw_name = "Noah"
+#raw_name = input('What is your character\'s name? \n')
+raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
-time.sleep(2)
+#time.sleep(2)
 
 # Assign Gender
 print("What gender is your character? \n")
-time.sleep(1)
-gender = input("Male                Female                Other \n").lower()
-# gender = 'male'
-time.sleep(2)
+#time.sleep(1)
+#gender = input("Male                Female                Other \n").lower()
+gender = 'male'
+#time.sleep(2)
 
 # Assign Player Type
-print("""What class is your character? """)
-time.sleep(1)
-vocation = input('Wizard            Warrior           Archer \n').lower()
+#print("""What class is your character? """)
+#time.sleep(1)
+#vocation = input('Wizard            Warrior           Archer \n').lower()
 
-# vocation = 'wizard'
-time.sleep(2)
+vocation = 'wizard'
+#time.sleep(2)
 
 character = Character(name, gender, vocation)
 
@@ -121,35 +121,34 @@ def first_battle(main_character):
 
 def first_move(main_character):
     # Character decides where to go
-    decision = int(input("1: Acanon         or          2: The Sea of Trees "))
+    decision = int(input("1: Acanon         or          2: The Goblin Forrest "))
     next_location = main_character.decide_move(decision)
     main_character.location = main_character.move_position(next_location)
 
     # Obtain index to travel through stored Story
-    current_index = main_character.location
-    current_level = index_to_descript(current_index)
-    # time.sleep(2)
     print("")
-
-    print(f"{main_character.name} enters " + location_scenery(current_level))
-    player_traversal(main_character)
+    interact_level(main_character)
 
 
-def player_traversal(main_character):
+def check_level_bonus(main_character):
     current_location_bonus = location_bonus(index_to_descript(main_character.location))
     time.sleep(3)
     print("\n")
     if current_location_bonus is not None:
         print(current_location_bonus + "\n")
     time.sleep(3)
-    enter_level(main_character)
+    interact_level(main_character)
 
 
-def enter_level(main_character):
-    current_location = index_to_descript(main_character.location)
-    level_name = location_name(current_location)
-    print(f"{main_character.name} arrived at {level_name}")
-    first_move(main_character)
+def interact_level(main_character):
+    current_level = index_to_descript(main_character.location)
+    level_name = location_name(current_level)
+    print(f"{main_character.name} arrived at {level_name}\n")
+    time.sleep(3)
+    print(f"{main_character.name} finds " + location_scenery(current_level))
+    time.sleep(2)
+    print("")
+    print(check_level_bonus(main_character))
 
 
 def travel_loop(main_character):
@@ -167,5 +166,5 @@ third_enemy = Enemy(enemy_available, genders, classes)
 fourth_enemy = Enemy(enemy_available, genders, classes)
 
 # Initiate Story
-start_game(character)
-# first_move(character)
+#start_game(character)
+travel_loop(character)
