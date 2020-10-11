@@ -22,7 +22,7 @@ def index_to_descript(player_index):
 
 
 def find_contiguous_levels(player_index):
-    if player_index > 1 or player_index < 5:
+    if player_index > 1 and player_index < 5:
         i = player_index - 1
         j = player_index + 1
     elif player_index == 1:
@@ -34,6 +34,10 @@ def find_contiguous_levels(player_index):
 
     return i, j
 
+def level_interest(level):
+    with open('locations.json') as f:
+        story = json.load(f)
+        return story['locations'][level]['interest']
 
 # Level Description Functions
 def location_scenery(level):

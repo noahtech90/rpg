@@ -16,32 +16,6 @@ class Character:
         capitalized_vocation = self.vocation[0].upper() + self.vocation[1:]
         return f"{self.name} the {capitalized_vocation}"
 
-    def move_position(self, move):
-        if move < 0 and self.location == 1:
-            return 1
-        # !!! Need to adjust 4 to be a variable that counts
-        # !!! number of levels in JSON data
-        elif self.location < 5 and move > 0:
-            position_move = self.location + 1
-            return position_move
-
-        else:
-            if move < 0 and self.location > 1:
-                position_move = self.location - 1
-                return position_move
-            else:
-                return self.location
-
-    def decide_move(self, decision):
-        decided = False
-        while not decided:
-            if decision == 1:
-                decision = -1
-                decided = True
-            elif decision == 2:
-                decision = 1
-        return decision
-
     def pronoun(self):
         if self.gender == 'male':
             return "he"

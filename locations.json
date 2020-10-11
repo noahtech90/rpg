@@ -3,23 +3,28 @@
     "level_one": {
       "name": "Acanon",
       "scenery": "a friendly town, a nearby shop, and place to sleep.",
-      "bonus": "Your character cannot be attacked by enemies in this space."
+      "bonus": "Your character cannot be attacked by enemies in this space.",
+      "interest": " to enter the shop nearby."
     },
     "level_two": {
       "name": "Hidden Cave",
-      "scenery": "a small cave tucked under a mountain."
+      "scenery": "a small cave tucked under a mountain.",
+      "interest": "to enter the cave."
     },
     "level_three": {
-      "name": "Goblin Forest",
-      "scenery": "a forested sunny trail."
+      "name": "The Goblin Forest",
+      "scenery": " a dark and ominous forest.  Each step taken feels like another step towards doom",
+      "interest": "to hurry into the forest"
     },
     "level_four": {
       "name": "The Sea of Trees",
-      "scenery": "a dark forest leading to a cavern."
+      "scenery": "a dark forest leading to a cavern.",
+      "interest": "to find their way in the endless miles of trees"
     },
     "level_five": {
       "name": "The Shadow Abyss",
-      "scenery": "a cave leading down to a strange flickering flame."
+      "scenery": "a cave leading down to a strange flickering flame.",
+      "interest": "to follow the flicker of light"
     }
   }
 }

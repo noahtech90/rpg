@@ -3,7 +3,8 @@ import random
 import time
 
 from character import Character, Enemy
-from location_functions import index_to_descript, location_scenery, location_bonus, location_name, find_contiguous_levels
+from location_functions import index_to_descript, location_scenery, location_bonus, location_name, \
+    find_contiguous_levels, level_interest
 
 """
 Project implements OOP design to dynamically create an RPG like story
@@ -38,27 +39,27 @@ For Testing
 """
 # Intro
 print("""You wake up in a dark cave \n""")
-#time.sleep(2)
+time.sleep(2)
 # Assign Name
-#raw_name = input('What is your character\'s name? \n')
-raw_name = "Noah"
+raw_name = input('What is your character\'s name? \n')
+#raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
-#time.sleep(2)
+time.sleep(2)
 
 # Assign Gender
 print("What gender is your character? \n")
-#time.sleep(1)
-#gender = input("Male                Female                Other \n").lower()
-gender = 'male'
-#time.sleep(2)
+time.sleep(1)
+gender = input("Male                Female                Other \n").lower()
+#gender = 'male'
+time.sleep(2)
 
 # Assign Player Type
-#print("""What class is your character? """)
-#time.sleep(1)
-#vocation = input('Wizard            Warrior           Archer \n').lower()
+print("""What class is your character? """)
+time.sleep(1)
+vocation = input('Wizard            Warrior           Archer \n').lower()
 
-vocation = 'wizard'
-#time.sleep(2)
+#vocation = 'wizard'
+time.sleep(2)
 
 character = Character(name, gender, vocation)
 
@@ -79,15 +80,23 @@ def start_game(main_character):
 def first_battle(main_character):
     # Battle Loop
     while main_character.character_stats['health'] > 0 and first_enemy.character_stats['health'] > 0:
+        deciding = True
         decision = input('Attack         Counter          Heal ').lower()
-        if decision == 'attack':
-            first_enemy.character_stats['health'] -= main_character.attack()
-        elif decision == 'counter':
-            attempt = first_enemy.character_stats['luck'] * random.randint(1, 5)
-            if attempt > 4:
-                first_enemy.character_stats['health'] -= 100
-        elif decision == 'heal':
-            main_character.character_stats['health'] += 10
+        while deciding:
+            if decision == 'attack':
+                first_enemy.character_stats['health'] -= main_character.attack()
+                deciding = False
+            elif decision == 'counter':
+                attempt = first_enemy.character_stats['luck'] * random.randint(1, 5)
+                if attempt > 4:
+                    first_enemy.character_stats['health'] -= 100
+                deciding = False
+            elif decision == 'heal':
+                main_character.character_stats['health'] += 10
+                deciding = False
+            else:
+                decision = input('Attack         Counter          Heal ').lower()
+
         if first_enemy.character_stats['health'] > 0:
             main_character.character_stats['health'] -= first_enemy.attack()
 
@@ -107,41 +116,46 @@ def first_battle(main_character):
             f'{first_enemy.name} "I am not the last poor {main_character.name}, there are 3 more looking for you..." \n')
         time.sleep(3)
         print(f"The creature passed on leaving {main_character.name} to ponder what had been said \n")
-        time.sleep(2)
-        print(f"{main_character.name} left the cave walked and began to chart {main_character.possesive()} quest \n")
         time.sleep(3)
-        first_move(main_character)
+        print(f"{main_character.name} left the cave and began to chart {main_character.possesive()} quest \n")
+        time.sleep(3)
+        move_character(main_character)
     # First Potential Loss of Game
     else:
-        time.sleep(3)
+        time.sleep(2)
         print(f"\n{main_character} has fallen")
         print(f"\n :( ")
         time.sleep(5)
 
 
-def first_move(main_character):
+def move_character(main_character):
     # Character decides where to go
 
+    # Find bordering levels
+    print(f"Where should {main_character.name} go? \n")
+    time.sleep(1)
     direction_one, direction_two = find_contiguous_levels(main_character.location)
+    print("")
+    time.sleep(2)
     if direction_two == None:
         only_level = location_name(index_to_descript(direction_one))
         print(f"Your character can only go to {only_level}")
         ready = input("Are you ready? ")
-        decision = 2
+        main_character.location = direction_one
     elif direction_one == None:
         only_level = location_name(index_to_descript(direction_two))
         print(f"Your character can only go to {only_level}")
         ready = input("Are you ready? ")
-        decision = 1
+        main_character.location = direction_two
 
     else:
         level_one = location_name(index_to_descript(direction_one))
         level_two = location_name(index_to_descript(direction_two))
-        decision = int(input(f"1. {level_one}            or          2. {level_two}"))
-
-    # New location fed into character object
-    next_location = main_character.decide_move(decision)
-    main_character.location = main_character.move_position(next_location)
+        decision = int(input(f"1. {level_one}            or          2. {level_two} "))
+        if decision == 1:
+            main_character.location = direction_one
+        elif decision == 2:
+            main_character.location = direction_two
 
     # Access Level Object
     print("")
@@ -150,32 +164,36 @@ def first_move(main_character):
 
 def check_level_bonus(main_character):
     current_location_bonus = location_bonus(index_to_descript(main_character.location))
-    #time.sleep(3)
+    time.sleep(3)
     print("\n")
     if current_location_bonus is not None:
         print(current_location_bonus + "\n")
-    time.sleep(3)
-    interact_level(main_character)
+    time.sleep(2)
 
 
 def interact_level(main_character):
     current_level = index_to_descript(main_character.location)
     level_name = location_name(current_level)
+    action = level_interest(current_level)
+
     print(f"{main_character.name} arrived at {level_name}\n")
-    #time.sleep(3)
+    time.sleep(3)
     print(f"{main_character.name} finds " + location_scenery(current_level))
-    #time.sleep(2)
-    print(check_level_bonus(main_character))
-    first_move(main_character)
+    time.sleep(2)
+    if check_level_bonus(main_character)is not None:
+        print(check_level_bonus(main_character))
+
+    print(f"{main_character.name} decides {action}")
+    move_character(main_character)
+
 
 
 def travel_loop(main_character):
     playing = True
     while playing:
-        first_move(main_character)
-        first_move(main_character)
-        #time.sleep(2)
-        #print("\n")
+        move_character(main_character)
+
+
 
 
 # Create Enemies
@@ -185,5 +203,5 @@ third_enemy = Enemy(enemy_available, genders, classes)
 fourth_enemy = Enemy(enemy_available, genders, classes)
 
 # Initiate Story
-#start_game(character)
-travel_loop(character)
+start_game(character)
+#travel_loop(character)
