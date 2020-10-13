@@ -42,7 +42,7 @@ print("""You wake up in a dark cave \n""")
 time.sleep(2)
 # Assign Name
 raw_name = input('What is your character\'s name? \n')
-#raw_name = "Noah"
+# raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
 time.sleep(2)
 
@@ -50,7 +50,7 @@ time.sleep(2)
 print("What gender is your character? \n")
 time.sleep(1)
 gender = input("Male                Female                Other \n").lower()
-#gender = 'male'
+# gender = 'male'
 time.sleep(2)
 
 # Assign Player Type
@@ -58,7 +58,7 @@ print("""What class is your character? """)
 time.sleep(1)
 vocation = input('Wizard            Warrior           Archer \n').lower()
 
-#vocation = 'wizard'
+# vocation = 'wizard'
 time.sleep(2)
 
 character = Character(name, gender, vocation)
@@ -127,8 +127,14 @@ def first_battle(main_character):
         print(f"\n :( ")
         time.sleep(5)
 
+def battle_sequence(main_character, enemy):
+
+
+
 def character_enemy_overlap(main_character, enemy_list):
-    pass
+    for enemy in enemy_list:
+        if enemy.location == main_character:
+        battle_sequence(main_character, enemy)
 
 
 def move_character(main_character):
@@ -186,12 +192,11 @@ def interact_level(main_character):
     time.sleep(3)
     print(f"{main_character.name} finds " + location_scenery(current_level))
     time.sleep(2)
-    if check_level_bonus(main_character)is not None:
+    if check_level_bonus(main_character) is not None:
         print(check_level_bonus(main_character))
 
     print(f"{main_character.name} decides {action}")
     move_character(main_character)
-
 
 
 def travel_loop(main_character):
@@ -203,14 +208,14 @@ def travel_loop(main_character):
         move_character(main_character)
 
 
-
-
 # Create Enemies
 first_enemy = Enemy(enemy_available, genders, classes)
 second_enemy = Enemy(enemy_available, genders, classes)
 third_enemy = Enemy(enemy_available, genders, classes)
 fourth_enemy = Enemy(enemy_available, genders, classes)
 
+enemy_list = [second_enemy, third_enemy, fourth_enemy]
+
 # Initiate Story
 start_game(character)
-#travel_loop(character)
+# travel_loop(character)
