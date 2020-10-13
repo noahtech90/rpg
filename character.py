@@ -50,6 +50,7 @@ class Character:
 
 class Enemy(Character):
     character_stats = dict(health=100, mana=20, speed=5, luck=1)
+    location = 5
 
     def __init__(self, name_list, genders, classes):
         self.name = name_list.pop(random.randint(0, len(name_list)) - 1)
@@ -61,6 +62,5 @@ class Enemy(Character):
         return attack_damage
 
     def move_location(self):
-        location_index_switch = random.randint(-1, 1)
-        self.location += location_index_switch
+        self.location += -2
 

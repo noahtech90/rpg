@@ -38,28 +38,28 @@ For Testing
 
 """
 # Intro
-print("""You wake up in a dark cave \n""")
-time.sleep(2)
+# print("""You wake up in a dark cave \n""")
+# time.sleep(2)
 # Assign Name
-raw_name = input('What is your character\'s name? \n')
-# raw_name = "Noah"
+# raw_name = input('What is your character\'s name? \n')
+raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
-time.sleep(2)
+# time.sleep(2)
 
 # Assign Gender
-print("What gender is your character? \n")
-time.sleep(1)
-gender = input("Male                Female                Other \n").lower()
-# gender = 'male'
-time.sleep(2)
+# print("What gender is your character? \n")
+# time.sleep(1)
+# gender = input("Male                Female                Other \n").lower()
+gender = 'male'
+# time.sleep(2)
 
 # Assign Player Type
-print("""What class is your character? """)
-time.sleep(1)
-vocation = input('Wizard            Warrior           Archer \n').lower()
+# print("""What class is your character? """)
+# time.sleep(1)
+# vocation = input('Wizard            Warrior           Archer \n').lower()
 
-# vocation = 'wizard'
-time.sleep(2)
+vocation = 'wizard'
+# time.sleep(2)
 
 character = Character(name, gender, vocation)
 
@@ -127,14 +127,56 @@ def first_battle(main_character):
         print(f"\n :( ")
         time.sleep(5)
 
-def battle_sequence(main_character, enemy):
 
+def battle_sequence(main_character, enemy):
+    # Battle Loop
+    time.sleep(1)
+    print(f"{enemy} jumps out and attacks {main_character}")
+    while main_character.character_stats['health'] > 0 and enemy.character_stats['health'] > 0:
+        deciding = True
+        decision = input('Attack         Counter          Heal ').lower()
+        while deciding:
+            if decision == 'attack':
+                enemy.character_stats['health'] -= main_character.attack()
+                deciding = False
+            elif decision == 'counter':
+                attempt = enemy.character_stats['luck'] * random.randint(1, 5)
+                if attempt > 4:
+                    enemy.character_stats['health'] -= 100
+                deciding = False
+            elif decision == 'heal':
+                main_character.character_stats['health'] += 10
+                deciding = False
+            else:
+                decision = input('Attack         Counter          Heal ').lower()
+
+        if enemy.character_stats['health'] > 0:
+            main_character.character_stats['health'] -= enemy.attack()
+
+        time.sleep(1)
+
+        # Show Enemy and Player Stats
+        print(f"\n\n{main_character}: " + str(main_character.character_stats) + "\n")
+        print(f"{enemy}: " + str(enemy.character_stats) + "\n")
+
+        time.sleep(2)
+
+    if main_character.character_stats['health'] > 0:
+        # Move Character
+        print(f"{main_character} defeated the wretched creature, the monster lay near death \n")
+
+    # Loss of Game
+    else:
+        time.sleep(2)
+        print(f"\n{main_character} has fallen")
+        print(f"\n :( ")
+        time.sleep(5)
 
 
 def character_enemy_overlap(main_character, enemy_list):
     for enemy in enemy_list:
-        if enemy.location == main_character:
-        battle_sequence(main_character, enemy)
+        if enemy.location == main_character.location and enemy.character_stats['health'] > 0:
+            battle_sequence(main_character, enemy)
 
 
 def move_character(main_character):
@@ -160,14 +202,28 @@ def move_character(main_character):
     else:
         level_one = location_name(index_to_descript(direction_one))
         level_two = location_name(index_to_descript(direction_two))
-        decision = int(input(f"1. {level_one}            or          2. {level_two} "))
-        while decision != 1 or decision != 2:
+        try:
+            decision = int(input(f"1. {level_one}            or          2. {level_two} "))
+
+        except:
+            print('Type "1"    or    "2"')
+            decision = int(input(f"1. {level_one}            or          2. {level_two} "))
+
+        deciding = True
+        while deciding:
             if decision == 1:
                 main_character.location = direction_one
+                deciding = False
             elif decision == 2:
                 main_character.location = direction_two
+                deciding = False
             else:
-                decision = int(input(f"1. {level_one}            or          2. {level_two} "))
+                try:
+                    decision = int(input(f"1. {level_one}            or          2. {level_two} "))
+
+                except:
+                    print('Type "1"    or    "2"')
+                    decision = int(input(f"1. {level_one}            or          2. {level_two} "))
 
     # Access Level Object
     print("")
@@ -196,7 +252,7 @@ def interact_level(main_character):
         print(check_level_bonus(main_character))
 
     print(f"{main_character.name} decides {action}")
-    move_character(main_character)
+    character_enemy_overlap(main_character, enemy_list)
 
 
 def travel_loop(main_character):
@@ -217,5 +273,5 @@ fourth_enemy = Enemy(enemy_available, genders, classes)
 enemy_list = [second_enemy, third_enemy, fourth_enemy]
 
 # Initiate Story
-start_game(character)
-# travel_loop(character)
+# start_game(character)
+travel_loop(character)
