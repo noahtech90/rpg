@@ -127,6 +127,8 @@ def first_battle(main_character):
         print(f"\n :( ")
         time.sleep(5)
 
+def character_enemy_overlap(main_character, enemy_list):
+
 
 def move_character(main_character):
     # Character decides where to go
@@ -191,6 +193,9 @@ def interact_level(main_character):
 def travel_loop(main_character):
     playing = True
     while playing:
+        second_enemy.move_location()
+        third_enemy.move_location()
+        fourth_enemy.move_location()
         move_character(main_character)
 
 

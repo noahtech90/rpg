@@ -59,3 +59,8 @@ class Enemy(Character):
     def attack(self):
         attack_damage = random.randint(5, 40)
         return attack_damage
+
+    def move_location(self):
+        location_index_switch = random.randint(-1, 1)
+        self.location += location_index_switch
+
