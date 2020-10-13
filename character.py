@@ -3,7 +3,7 @@ import json
 
 
 class Character:
-    character_stats = dict(health=120, mana=50, speed=10, luck=1.3)
+    character_stats = dict(health=150, mana=50, speed=10, luck=1.3)
     location = 2
 
     def __init__(self, name, gender, vocation):
@@ -49,7 +49,7 @@ class Character:
 
 
 class Enemy(Character):
-    character_stats = dict(health=130, mana=20, speed=5, luck=1)
+    character_stats = dict(health=100, mana=20, speed=5, luck=1)
 
     def __init__(self, name_list, genders, classes):
         self.name = name_list.pop(random.randint(0, len(name_list)) - 1)

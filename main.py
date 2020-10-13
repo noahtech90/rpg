@@ -128,6 +128,7 @@ def first_battle(main_character):
         time.sleep(5)
 
 def character_enemy_overlap(main_character, enemy_list):
+    pass
 
 
 def move_character(main_character):
@@ -154,10 +155,13 @@ def move_character(main_character):
         level_one = location_name(index_to_descript(direction_one))
         level_two = location_name(index_to_descript(direction_two))
         decision = int(input(f"1. {level_one}            or          2. {level_two} "))
-        if decision == 1:
-            main_character.location = direction_one
-        elif decision == 2:
-            main_character.location = direction_two
+        while decision != 1 or decision != 2:
+            if decision == 1:
+                main_character.location = direction_one
+            elif decision == 2:
+                main_character.location = direction_two
+            else:
+                decision = int(input(f"1. {level_one}            or          2. {level_two} "))
 
     # Access Level Object
     print("")
