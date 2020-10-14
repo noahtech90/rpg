@@ -23,9 +23,9 @@ def index_to_descript(player_index):
     level_description = index_to_level_descript[player_index]
     return level_description
 
-
+# Find levels that can be travelled to
 def find_contiguous_levels(player_index):
-    if player_index > 1 and player_index < 8:
+    if player_index > 1 and player_index < level_count():
         i = player_index - 1
         j = player_index + 1
     elif player_index == 1:
@@ -37,12 +37,14 @@ def find_contiguous_levels(player_index):
 
     return i, j
 
+
+# Level Description Functions
 def level_interest(level):
     with open('locations.json') as f:
         story = json.load(f)
         return story['locations'][level]['interest']
 
-# Level Description Functions
+
 def location_scenery(level):
     with open('locations.json') as f:
         story = json.load(f)
@@ -62,3 +64,9 @@ def location_bonus(level):
             return story['locations'][level]['bonus']
         else:
             return None
+
+
+def level_count():
+    with open('locations.json') as f:
+        story = json.load(f)
+        return len(story['locations'].keys())

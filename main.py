@@ -4,7 +4,7 @@ import time
 
 from character import Character, Enemy
 from location_functions import index_to_descript, location_scenery, location_bonus, location_name, \
-    find_contiguous_levels, level_interest
+    find_contiguous_levels, level_interest, level_count
 
 # Each enemy character is given name from below list
 enemy_available = ['Baron', 'Ratchet', 'Snitzz', 'Valten']
@@ -172,9 +172,7 @@ def character_enemy_overlap(main_character, enemies):
 
 # Character fed contiguous locations and decides where to go
 def move_character(main_character):
-    # Character decides where to go
-
-    # Find bordering levels
+    # Find bordering levels and present to character
     print(f"Where should {main_character.name} go? \n")
     time.sleep(1)
     direction_one, direction_two = find_contiguous_levels(main_character.location)
@@ -183,11 +181,14 @@ def move_character(main_character):
     if direction_two is None:
         only_level = location_name(index_to_descript(direction_one))
         print(f"Your character can only go to {only_level}")
+        # This is useless but gives pause in game
         ready = input("Are you ready? ")
+        ready = None
         main_character.location = direction_one
     elif direction_one is None:
         only_level = location_name(index_to_descript(direction_two))
         print(f"Your character can only go to {only_level}")
+        # This is useless but gives pause in game
         ready = input("Are you ready? ")
         main_character.location = direction_two
 
@@ -253,6 +254,9 @@ def travel_loop(main_character):
         second_enemy.move_location()
         third_enemy.move_location()
         fourth_enemy.move_location()
+        print(second_enemy.location)
+        print(third_enemy.location)
+        print(fourth_enemy.location)
         move_character(main_character)
 
 

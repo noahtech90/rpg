@@ -1,5 +1,5 @@
 import random
-import json
+from location_functions import level_count
 
 
 class Character:
@@ -49,7 +49,7 @@ class Character:
 
 
 class Enemy(Character):
-    location = 5
+    location = level_count()
 
     def __init__(self, name_list, genders, classes):
         self.name = name_list.pop(random.randint(0, len(name_list)) - 1)
@@ -62,5 +62,9 @@ class Enemy(Character):
         return attack_damage
 
     def move_location(self):
-        self.location += -2
+        if self.location > 4 and self.location <= level_count():
+            self.location -= random.randint(1, 2)
+        elif self.location <= 3:
+            self.location += (random.randint(1, 5))
+
 
