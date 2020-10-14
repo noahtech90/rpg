@@ -6,40 +6,28 @@ from character import Character, Enemy
 from location_functions import index_to_descript, location_scenery, location_bonus, location_name, \
     find_contiguous_levels, level_interest
 
-"""
-Project implements OOP design to dynamically create an RPG like story
-
-Character can attack and defend, similar to a final fantasy type game
-
-Enemies inherit from the Character class
-
-Turn based game that allows you to travel
-
-There are four enemies on the map
-
-Each turn you will move and they will move
-
-You don't know where they are and win the game by defeating all 4
-"""
 # Each enemy character is given name from below list
 enemy_available = ['Baron', 'Ratchet', 'Snitzz', 'Valten']
 
 # Gender Options
 genders = ['male', 'female', 'other']
 
-# Player Types
+# Character Types
 classes = ['warrior', 'wizard', 'archer']
 
 """
-
+ !!!
+ 
 Initial Character Setup Section Currently Commented Out 
 
 For Testing
+!!!
 
 """
 # Intro
 # print("""You wake up in a dark cave \n""")
 # time.sleep(2)
+
 # Assign Name
 # raw_name = input('What is your character\'s name? \n')
 raw_name = "Noah"
@@ -97,6 +85,7 @@ def first_battle(main_character):
             else:
                 decision = input('Attack         Counter          Heal ').lower()
 
+        # Enemy attacks back if they are still alive
         if first_enemy.character_stats['health'] > 0:
             main_character.character_stats['health'] -= first_enemy.attack()
 
@@ -107,7 +96,7 @@ def first_battle(main_character):
         print(f"{first_enemy}: " + str(first_enemy.character_stats) + "\n")
 
         time.sleep(2)
-
+    # Player begins to move through map
     if main_character.character_stats['health'] > 0:
         # Move Character
         print(f"{main_character} defeated the wretched creature, the monster lay near death \n")
@@ -164,6 +153,8 @@ def battle_sequence(main_character, enemy):
     if main_character.character_stats['health'] > 0:
         # Move Character
         print(f"{main_character} defeated the wretched creature, the monster lay near death \n")
+        time.sleep(2)
+
 
     # Loss of Game
     else:
@@ -179,6 +170,7 @@ def character_enemy_overlap(main_character, enemy_list):
             battle_sequence(main_character, enemy)
 
 
+# Character fed contiguous locations and decides where to go
 def move_character(main_character):
     # Character decides where to go
 
