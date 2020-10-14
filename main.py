@@ -188,12 +188,12 @@ def move_character(main_character):
     direction_one, direction_two = find_contiguous_levels(main_character.location)
     print("")
     time.sleep(2)
-    if direction_two == None:
+    if direction_two is None:
         only_level = location_name(index_to_descript(direction_one))
         print(f"Your character can only go to {only_level}")
         ready = input("Are you ready? ")
         main_character.location = direction_one
-    elif direction_one == None:
+    elif direction_one is None:
         only_level = location_name(index_to_descript(direction_two))
         print(f"Your character can only go to {only_level}")
         ready = input("Are you ready? ")
