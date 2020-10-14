@@ -44,18 +44,18 @@ class Character:
             return "bear"
 
     def attack(self):
-        attack_damage = random.randint(15, 50) + (self.character_stats['luck'] * 1.2)
+        attack_damage = random.randint(200, 5000) + (self.character_stats['luck'] * 1.2)
         return attack_damage
 
 
 class Enemy(Character):
-    character_stats = dict(health=100, mana=20, speed=5, luck=1)
     location = 5
 
     def __init__(self, name_list, genders, classes):
         self.name = name_list.pop(random.randint(0, len(name_list)) - 1)
         self.gender = genders[random.randint(0, 2)]
         self.vocation = classes[random.randint(0, 2)]
+        self.character_stats = dict(health=int(100), mana=20, speed=5, luck=1)
 
     def attack(self):
         attack_damage = random.randint(5, 40)

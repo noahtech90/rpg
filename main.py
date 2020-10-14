@@ -164,8 +164,8 @@ def battle_sequence(main_character, enemy):
         time.sleep(5)
 
 
-def character_enemy_overlap(main_character, enemy_list):
-    for enemy in enemy_list:
+def character_enemy_overlap(main_character, enemies):
+    for enemy in enemies:
         if enemy.location == main_character.location and enemy.character_stats['health'] > 0:
             battle_sequence(main_character, enemy)
 

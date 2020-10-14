@@ -26,5 +26,20 @@
       "scenery": "a cave leading down to a strange flickering flame.",
       "interest": "to follow the flicker of light"
     }
-  }
+  },
+    "level_six": {
+      "name": "The Destroyed Town",
+      "scenery": "a destroyed town filled with the remains of your family",
+      "interest": "to enter the town"
+    },
+    "level_seven": {
+      "name": "The Shadow Abyss",
+      "scenery": "a cave leading down to a strange flickering flame.",
+      "interest": "to follow the flicker of light"
+    },
+    "level_eight": {
+      "name": "The Shadow Abyss",
+      "scenery": "a cave leading down to a strange flickering flame.",
+      "interest": "to follow the flicker of light"
+    }
 }

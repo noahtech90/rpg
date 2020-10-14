@@ -14,7 +14,10 @@ def index_to_descript(player_index):
         2: 'level_two',
         3: 'level_three',
         4: 'level_four',
-        5: 'level_five'
+        5: 'level_five',
+        6: 'level_six',
+        7: 'level_seven',
+        8: 'level_eight',
     }
 
     level_description = index_to_level_descript[player_index]
@@ -22,7 +25,7 @@ def index_to_descript(player_index):
 
 
 def find_contiguous_levels(player_index):
-    if player_index > 1 and player_index < 5:
+    if player_index > 1 and player_index < 8:
         i = player_index - 1
         j = player_index + 1
     elif player_index == 1:
