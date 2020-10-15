@@ -25,29 +25,29 @@ For Testing
 
 """
 # Intro
-# print("""You wake up in a dark cave \n""")
-# time.sleep(2)
+print("""You wake up in a dark cave \n""")
+time.sleep(2)
 
 # Assign Name
-# raw_name = input('What is your character\'s name? \n')
-raw_name = "Noah"
+raw_name = input('What is your character\'s name? \n')
+#raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
-# time.sleep(2)
+time.sleep(2)
 
 # Assign Gender
-# print("What gender is your character? \n")
-# time.sleep(1)
-# gender = input("Male                Female                Other \n").lower()
-gender = 'male'
-# time.sleep(2)
+print("What gender is your character? \n")
+time.sleep(1)
+gender = input("Male                Female                Other \n").lower()
+#gender = 'male'
+time.sleep(2)
 
 # Assign Player Type
-# print("""What class is your character? """)
-# time.sleep(1)
-# vocation = input('Wizard            Warrior           Archer \n').lower()
+print("""What class is your character? """)
+time.sleep(1)
+vocation = input('Wizard            Warrior           Archer \n').lower()
 
-vocation = 'wizard'
-# time.sleep(2)
+#vocation = 'wizard'
+time.sleep(2)
 
 character = Character(name, gender, vocation)
 
@@ -108,7 +108,7 @@ def first_battle(main_character):
         time.sleep(3)
         print(f"{main_character.name} left the cave and began to chart {main_character.possesive()} quest \n")
         time.sleep(3)
-        move_character(main_character)
+        travel_loop(main_character)
     # First Potential Loss of Game
     else:
         time.sleep(2)
@@ -238,19 +238,48 @@ def check_level_bonus(main_character):
 def interact_level(main_character):
     current_level = index_to_descript(main_character.location)
     level_name = location_name(current_level)
-    action = level_interest(current_level)
-
-    print(f"{main_character.name} travels to  {level_name}\n")
+    print("")
     time.sleep(3)
-    print(f"{main_character.name} finds " + location_scenery(current_level))
+
+    print(f"{main_character.name} travels to {level_name}\n")
+    time.sleep(3)
+    print(f"{main_character.name} finds" + location_scenery(current_level))
     time.sleep(2)
     if check_level_bonus(main_character) is not None:
         print(check_level_bonus(main_character))
     character_enemy_overlap(main_character, enemy_list)
     time.sleep(1)
     print("")
-    print(f"{main_character.name} can {action}, do you wish to continue? ")
+    print(f"{main_character} can continue to explore or travel again, what should {main_character.pronoun()} do? \n")
+    time.sleep(2)
+    level_decision(main_character)
 
+
+
+def level_decision(main_character):
+    current_level = index_to_descript(main_character.location)
+    level_name = location_name(current_level)
+    action = level_interest(current_level)
+    deciding = True
+    while deciding:
+        try:
+            decision = int(input("1. Explore the location              2. Travel Again "))
+
+        except:
+            print("Must enter Number")
+            decision = int(input("1. Explore the location              2. Travel Again "))
+
+        if decision == 1:
+            print(f"{main_character.name} decides {action}.  After some time passed, {main_character.name} determined {main_character.pronoun()} had nothing more to see \n")
+            time.sleep(2)
+            deciding = False
+        elif decision == 2:
+            print(f"{main_character} decides to move on \n")
+            time.sleep(2)
+            deciding = False
+        else:
+            print("Error, please enter a number")
+            decision = int(input("1. Explore the location              2. Travel Again "))
 
 
 def travel_loop(main_character):
@@ -258,7 +287,11 @@ def travel_loop(main_character):
         second_enemy.move_location()
         third_enemy.move_location()
         fourth_enemy.move_location()
-        move_character(main_character)
+        print(second_enemy.location)
+        print(third_enemy.location)
+        print(fourth_enemy.location)
+        if len(enemy_list) > 0:
+            move_character(main_character)
 
 
 # Create Enemies
@@ -270,5 +303,5 @@ fourth_enemy = Enemy(enemy_available, genders, classes)
 enemy_list = [second_enemy, third_enemy, fourth_enemy]
 
 # Initiate Story
-# start_game(character)
-travel_loop(character)
+start_game(character)
+#travel_loop(character)
