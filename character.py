@@ -3,7 +3,7 @@ from location_functions import level_count
 
 
 class Character:
-    character_stats = dict(health=150, mana=50, speed=10, luck=3)
+    character_stats = dict(health=190, mana=50, speed=10, luck=3)
     location = 2
 
     def __init__(self, name, gender, vocation):
@@ -44,7 +44,7 @@ class Character:
             return "bear"
 
     def attack(self):
-        attack_damage = random.randint(15, 45) + (self.character_stats['luck'] * 1.2)
+        attack_damage = random.randint(25, 55) + (self.character_stats['luck'] * 1.2)
         return attack_damage
 
 

@@ -287,11 +287,10 @@ def travel_loop(main_character):
         second_enemy.move_location()
         third_enemy.move_location()
         fourth_enemy.move_location()
-        print(second_enemy.location)
-        print(third_enemy.location)
-        print(fourth_enemy.location)
         if len(enemy_list) > 0:
             move_character(main_character)
+    print(f"{main_character} defeated all 4 enemies.  {main_character.possesive()} will live on for eternity")
+    time.sleep(6)
 
 
 # Create Enemies
