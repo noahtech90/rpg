@@ -14,12 +14,12 @@
     "level_three": {
       "name": "The Goblin Forest",
       "scenery": " a dark and ominous forest.  Each step taken feels like another step towards doom",
-      "interest": "to hurry into the forest"
+      "interest": "to hurry into the forest. "
     },
     "level_four": {
       "name": "The Sea of Trees",
       "scenery": "a dark forest leading to a cavern.",
-      "interest": "to find their way in the endless miles of trees"
+      "interest": "to find their way in the endless miles of trees. "
     },
     "level_five": {
       "name": "The Shadow Abyss",
@@ -28,18 +28,18 @@
     },
     "level_six": {
       "name": "The Destroyed Town",
-      "scenery": "a destroyed town filled with the remains of your family",
-      "interest": "to enter the town"
+      "scenery": "a destroyed town filled with the remains of your family. ",
+      "interest": "to enter the ruined town"
     },
     "level_seven": {
-      "name": "The Shadow Abyss",
-      "scenery": "a cave leading down to a strange flickering flame.",
-      "interest": "to follow the flicker of light"
+      "name": "The Open Field",
+      "scenery": "a barren field. ",
+      "interest": "to walk through the field. "
     },
     "level_eight": {
-      "name": "The Shadow Abyss",
-      "scenery": "a cave leading down to a strange flickering flame.",
-      "interest": "to follow the flicker of light"
+      "name": "The Cliff's Edge",
+      "scenery": "a majestic cliff edge overlooking the ocean",
+      "interest": " to climb down to the ocean shore. "
     }
   }
 }

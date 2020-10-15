@@ -117,7 +117,7 @@ def first_battle(main_character):
         time.sleep(5)
 
 
-def battle_sequence(main_character, enemy):
+def battle_sequence(main_character, enemy, counter):
     # Battle Loop
     time.sleep(1)
     print(f"{enemy} jumps out and attacks {main_character}")
@@ -154,6 +154,7 @@ def battle_sequence(main_character, enemy):
         # Move Character
         print(f"{main_character} defeated the wretched creature, the monster lay near death \n")
         time.sleep(2)
+        enemy_list.pop(counter)
 
 
     # Loss of Game
@@ -165,9 +166,11 @@ def battle_sequence(main_character, enemy):
 
 
 def character_enemy_overlap(main_character, enemies):
+    counter = 0
     for enemy in enemies:
         if enemy.location == main_character.location and enemy.character_stats['health'] > 0:
-            battle_sequence(main_character, enemy)
+            battle_sequence(main_character, enemy, counter)
+        counter += 1
 
 
 # Character fed contiguous locations and decides where to go
@@ -237,26 +240,24 @@ def interact_level(main_character):
     level_name = location_name(current_level)
     action = level_interest(current_level)
 
-    print(f"{main_character.name} arrived at {level_name}\n")
+    print(f"{main_character.name} travels to  {level_name}\n")
     time.sleep(3)
     print(f"{main_character.name} finds " + location_scenery(current_level))
     time.sleep(2)
     if check_level_bonus(main_character) is not None:
         print(check_level_bonus(main_character))
-
-    print(f"{main_character.name} decides {action}")
     character_enemy_overlap(main_character, enemy_list)
+    time.sleep(1)
+    print("")
+    print(f"{main_character.name} can {action}, do you wish to continue? ")
+
 
 
 def travel_loop(main_character):
-    playing = True
-    while playing:
+    while len(enemy_list) > 0:
         second_enemy.move_location()
         third_enemy.move_location()
         fourth_enemy.move_location()
-        print(second_enemy.location)
-        print(third_enemy.location)
-        print(fourth_enemy.location)
         move_character(main_character)
 
 
