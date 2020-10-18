@@ -1,7 +1,7 @@
 # Import Libraries
 import random
 import time
-
+# Import classes and location data functions
 from character import Character, Enemy
 from location_functions import index_to_descript, location_scenery, location_bonus, location_name, \
     find_contiguous_levels, level_interest, level_count
@@ -15,22 +15,12 @@ genders = ['male', 'female', 'other']
 # Character Types
 classes = ['warrior', 'wizard', 'archer']
 
-"""
- !!!
- 
-Initial Character Setup Section Currently Commented Out 
-
-For Testing
-!!!
-
-"""
 # Intro
 print("""You wake up in a dark cave \n""")
 time.sleep(2)
 
 # Assign Name
 raw_name = input('What is your character\'s name? \n')
-#raw_name = "Noah"
 name = raw_name[0].upper() + raw_name[1:].lower()
 time.sleep(2)
 
@@ -38,7 +28,6 @@ time.sleep(2)
 print("What gender is your character? \n")
 time.sleep(1)
 gender = input("Male                Female                Other \n").lower()
-#gender = 'male'
 time.sleep(2)
 
 # Assign Player Type
@@ -46,10 +35,7 @@ print("""What class is your character? """)
 time.sleep(1)
 vocation = input('Wizard            Warrior           Archer \n').lower()
 
-#vocation = 'wizard'
 time.sleep(2)
-
-character = Character(name, gender, vocation)
 
 
 def start_game(main_character):
@@ -96,6 +82,7 @@ def first_battle(main_character):
         print(f"{first_enemy}: " + str(first_enemy.character_stats) + "\n")
 
         time.sleep(2)
+
     # Player begins to move through map
     if main_character.character_stats['health'] > 0:
         # Move Character
@@ -152,9 +139,11 @@ def battle_sequence(main_character, enemy, counter):
 
     if main_character.character_stats['health'] > 0:
         # Move Character
-        print(f"{main_character} defeated the wretched creature, the monster lay near death \n")
+        print(f"{main_character} defeated the wretched creature and the monster lay dead \n")
         time.sleep(2)
         enemy_list.pop(counter)
+        print(f"There are only {len(enemy_list)} goblins left on the map \n")
+        time.sleep(2)
 
 
     # Loss of Game
@@ -165,8 +154,11 @@ def battle_sequence(main_character, enemy, counter):
         time.sleep(5)
 
 
+# Test whether or no enemy and player are in same location
 def character_enemy_overlap(main_character, enemies):
+    # Counter used to identify index of enemy to be popped out of enemy list
     counter = 0
+
     for enemy in enemies:
         if enemy.location == main_character.location and enemy.character_stats['health'] > 0:
             battle_sequence(main_character, enemy, counter)
@@ -232,9 +224,10 @@ def check_level_bonus(main_character):
     print("\n")
     if current_location_bonus is not None:
         print(current_location_bonus + "\n")
-    time.sleep(2)
+        time.sleep(2)
 
 
+# Still in progress, each level will have areas to explore and bonuses to find
 def interact_level(main_character):
     current_level = index_to_descript(main_character.location)
     level_name = location_name(current_level)
@@ -248,14 +241,16 @@ def interact_level(main_character):
     if check_level_bonus(main_character) is not None:
         print(check_level_bonus(main_character))
     character_enemy_overlap(main_character, enemy_list)
-    time.sleep(1)
-    print("")
-    print(f"{main_character} can continue to explore or travel again, what should {main_character.pronoun()} do? \n")
-    time.sleep(2)
-    level_decision(main_character)
+    if len(enemy_list) > 0:
+        time.sleep(1)
+        print("")
+        print(
+            f"{main_character} can continue to explore or travel again, what should {main_character.pronoun()} do? \n")
+        time.sleep(2)
+        level_decision(main_character)
 
 
-
+# Character chooses next level to travel
 def level_decision(main_character):
     current_level = index_to_descript(main_character.location)
     level_name = location_name(current_level)
@@ -270,7 +265,8 @@ def level_decision(main_character):
             decision = int(input("1. Explore the location              2. Travel Again "))
 
         if decision == 1:
-            print(f"{main_character.name} decides {action}.  After some time passed, {main_character.name} determined {main_character.pronoun()} had nothing more to see \n")
+            print(
+                f"{main_character.name} decides {action}.  After some time passed, {main_character.name} determined {main_character.pronoun()} had nothing more to see \n")
             time.sleep(2)
             deciding = False
         elif decision == 2:
@@ -282,16 +278,21 @@ def level_decision(main_character):
             decision = int(input("1. Explore the location              2. Travel Again "))
 
 
+# Character and enemy moves between levels until character or all enemies dead
 def travel_loop(main_character):
     while len(enemy_list) > 0:
         second_enemy.move_location()
         third_enemy.move_location()
         fourth_enemy.move_location()
-        if len(enemy_list) > 0:
-            move_character(main_character)
-    print(f"{main_character} defeated all 4 enemies.  {main_character.possesive()} will live on for eternity")
-    time.sleep(6)
+        move_character(main_character)
+    if main_character.character_stats['health'] > 0:
+        print(
+            f"{main_character} defeated all 4 enemies.  The legacy of {main_character.name} will live on for eternity")
+        time.sleep(6)
 
+
+# Create Main Player
+character = Character(name, gender, vocation)
 
 # Create Enemies
 first_enemy = Enemy(enemy_available, genders, classes)
@@ -303,4 +304,3 @@ enemy_list = [second_enemy, third_enemy, fourth_enemy]
 
 # Initiate Story
 start_game(character)
-#travel_loop(character)
