@@ -80,8 +80,8 @@ class Enemy(Character):
 
     def move_location(self):
         if self.location >= 4 and self.location <= level_count():
-            self.location -= random.randint(1, 2)
+            self.location -= 1
         elif self.location <= 3:
-            self.location += (random.randint(1, 5))
+            self.location += (random.randint(3, 5))
 
 

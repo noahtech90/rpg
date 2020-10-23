@@ -182,9 +182,8 @@ def move_character(main_character):
         main_character.location = direction_one
     elif direction_one is None:
         only_level = location_name(index_to_descript(direction_two))
-        print(f"Your character can only go to {only_level}")
-        # This is useless but gives pause in game
-        ready = input("Are you ready? ")
+        print(f"Your character can only go to {only_level} \n")
+        time.sleep(2)
         main_character.location = direction_two
 
     else:
