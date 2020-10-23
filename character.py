@@ -32,6 +32,23 @@ class Character:
         else:
             return "their"
 
+    def resassign_attributes(self):
+        if self.vocation == 'wizard':
+            self.character_stats['health'] -= 30
+            self.character_stats['mana'] += 30
+            self.character_stats['speed'] -= 5
+            self.character_stats['luck'] += 5
+        elif self.vocation == 'warrior':
+            self.character_stats['health'] += 30
+            self.character_stats['mana'] -= 30
+            self.character_stats['speed'] += 2
+            self.character_stats['luck'] += 2
+        elif self.vocation == 'archer':
+            self.character_stats['health'] -= 30
+            self.character_stats['mana'] += 10
+            self.character_stats['speed'] += 15
+            self.character_stats['luck'] += 15
+
     def weapon(self):
 
         if self.vocation == 'wizard':
