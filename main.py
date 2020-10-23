@@ -302,6 +302,11 @@ fourth_enemy = Enemy(enemy_available, genders, classes)
 
 enemy_list = [second_enemy, third_enemy, fourth_enemy]
 
-# Initiate Story
+# Assign Character Attributes Based on Class
 character.resassign_attributes()
+# Assign Enemy Attributes
+for enemy in enemy_list:
+    enemy.resassign_attributes()
+
+# Initiate Story
 start_game(character)
