@@ -61,7 +61,7 @@ class Character:
             return "bear"
 
     def attack(self):
-        attack_damage = random.randint(25, 55) + (self.character_stats['luck'] * 90)
+        attack_damage = random.randint(25, 55) + self.character_stats['luck']
         return attack_damage
 
 
@@ -79,9 +79,9 @@ class Enemy(Character):
         return attack_damage
 
     def move_location(self):
-        if self.location >= 4 and self.location <= level_count():
+        if self.location >= 6 and self.location <= level_count():
             self.location -= 1
-        elif self.location <= 3:
+        elif self.location <= 2:
             self.location += (random.randint(3, 5))
 
 
