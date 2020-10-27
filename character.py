@@ -66,7 +66,7 @@ class Character:
 
 
 class Enemy(Character):
-    location = level_count()
+    location = 6
 
     def __init__(self, name_list, genders, classes):
         self.name = name_list.pop(random.randint(0, len(name_list)) - 1)
@@ -79,7 +79,7 @@ class Enemy(Character):
         return attack_damage
 
     def move_location(self):
-        if self.location >= 6 and self.location <= level_count():
+        if 6 >= self.location >= 2:
             self.location -= 1
         elif self.location <= 2:
             self.location += (random.randint(3, 5))
