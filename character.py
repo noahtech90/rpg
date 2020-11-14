@@ -3,7 +3,7 @@ from location_functions import level_count
 
 
 class Character:
-    character_stats = dict(health=190, mana=50, speed=10, luck=3)
+    character_stats = dict(health=290, mana=50, speed=10, luck=3)
     location = 2
 
     def __init__(self, name, gender, vocation):
