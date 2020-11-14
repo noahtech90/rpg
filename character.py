@@ -79,7 +79,7 @@ class Enemy(Character):
         return attack_damage
 
     def move_location(self):
-        if 6 >= self.location >= 2:
+        if 8 >= self.location > 2:
             self.location -= 1
         elif self.location <= 2:
             self.location += (random.randint(3, 5))
