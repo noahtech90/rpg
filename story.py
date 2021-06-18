@@ -5,8 +5,6 @@ from character import Character, Enemy
 from location_functions import index_to_descript, location_scenery, location_bonus, location_name, \
     find_contiguous_levels, level_interest, level_count
 
-# Each enemy character is given name from below list
-enemy_available = ['Baron', 'Ratchet', 'Snitzz', 'Valten']
 
 # Gender Options
 genders = ['male', 'female', 'other']
@@ -188,6 +186,8 @@ def move_character(main_character):
         ready = None
         main_character.location = direction_one
 
+    # Display location options for user to choose
+
     else:
         level_one = location_name(index_to_descript(direction_one))
         level_two = location_name(index_to_descript(direction_two))
@@ -209,8 +209,6 @@ def move_character(main_character):
             else:
                 decision = int(input(f"1. {level_one}            or          2. {level_two} "))
 
-
-    # Access Level Object
     print("")
     interact_level(main_character)
 
@@ -290,6 +288,9 @@ def travel_loop(main_character):
 
 # Create Main Player
 character = Character(name, gender, vocation)
+
+# Each enemy character is given name from below list
+enemy_available = ['Baron', 'Ratchet', 'Snitzz', 'Valten']
 
 # Create Enemies
 first_enemy = Enemy(enemy_available, genders, classes)

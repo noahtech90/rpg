@@ -23,9 +23,10 @@ def index_to_descript(player_index):
     level_description = index_to_level_descript[player_index]
     return level_description
 
+
 # Find levels that can be travelled to
 def find_contiguous_levels(player_index):
-    if player_index > 1 and player_index < level_count():
+    if 1 < player_index < level_count():
         i = player_index - 1
         j = player_index + 1
     elif player_index == 1:
